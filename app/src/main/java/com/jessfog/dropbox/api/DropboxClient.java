@@ -1,4 +1,4 @@
-package com.jessfog.dropbox;
+package com.jessfog.dropbox.api;
 
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;

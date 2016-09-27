@@ -2,53 +2,40 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/MainScreenCoordinatorLayout">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/accountData">
+        android:id="@+id/accountData"
+        style="@style/MainScreenInnerLayout">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"/>
+            style="@style/ProfileImage" />
+
+        <TextView
+            android:id="@+id/profileName"
+            style="@style/ProfileNameText" />
+
+        <TextView
+            android:id="@+id/profileEmail"
+            style="@style/ProfileEmailText" />
 
         <TextView
             android:id="@+id/instructions"
-            android:layout_below="@id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_margin="10dp"
-            android:text="Use the button below to upload an image to your remote album.
-            Images uploaded will be displayed here on a list. "
-            android:textSize="24dp"
-            android:visibility="visible"/>
+            android:text="@string/instructions"
+            style="@style/PhotoListInstructionsText" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/card_recycler_view"
-            android:scrollbars="vertical"
-            android:layout_below="@id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            style="@style/PhotoListRecyclerView" />
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
         app:layout_behavior="com.jessfog.dropbox.interfaces.ScrollingFAButtonBehavior"
-        app:srcCompat="@drawable/ic_add_white_24dp" />
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        style="@style/UploadPhotoButton" />
 
 </android.support.design.widget.CoordinatorLayout>

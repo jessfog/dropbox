@@ -1,37 +1,17 @@
 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    card_view:cardCornerRadius="5dp">
+    card_view:cardCornerRadius="5dp"
+    style="@style/PhotoRowCardViewLayout">
 
-    <FrameLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <FrameLayout style="@style/PhotoRowInnerLayout">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:transitionName="@string/photo_transition"
-            style="@style/BaseTheme"
-            android:scaleType="centerCrop"
             android:id="@+id/photo_iv"
-            android:background="@color/colorPrimary"/>
+            style="@style/PhotoRowImage" />
 
         <TextView
             android:id="@+id/name_tv"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal|bottom"
-            android:textStyle="bold"
-            android:textColor="@color/background"
-            android:textSize="18sp"
-            android:background="#80000000"/>
+            style="@style/PhotoRowTitleText" />
     </FrameLayout>
 
 </android.support.v7.widget.CardView>

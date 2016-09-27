@@ -38,8 +38,12 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences prefs = getSharedPreferences("com.jessfog.dropbox", Context.MODE_PRIVATE);
             prefs.edit().putString("access-token", accessToken).apply();
 
-            //Proceed to MainActivity
+            //Proceed to MainActivity and eliminate LoginActivity from stack
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     }

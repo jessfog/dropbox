@@ -2,14 +2,16 @@ package com.jessfog.dropbox;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,13 +20,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dropbox.core.v2.users.FullAccount;
 import com.dropbox.core.v2.DbxClientV2;
 import com.jessfog.dropbox.adapter.PhotoAdapter;
+import com.jessfog.dropbox.api.DropboxClient;
+import com.jessfog.dropbox.api.URI_to_Path;
 import com.jessfog.dropbox.model.Photo;
 import com.jessfog.dropbox.tasks.DownloadTask;
+import com.jessfog.dropbox.tasks.UploadTask;
+import com.jessfog.dropbox.tasks.UserAccountTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -37,10 +42,12 @@ public class MainActivity extends AppCompatActivity
 
     private static final int IMAGE_REQUEST_CODE = 101;
     private String ACCESS_TOKEN;
-    private DbxClientV2 mDBxClient;
-    private View coordinatorLayout;
-    private TextView mInstructions;
     private String TAG = "DROPBOX";
+    private DbxClientV2 mDBxClient;
+    private View mCoordinatorLayout;
+    private TextView mInstructions;
+    private TextView mInstructionsTV;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,10 @@ public class MainActivity extends AppCompatActivity
         });
 
         getFolderContents();
+        mCoordinatorLayout = findViewById(R.id.coordinatorLayout);
+        Snackbar snackbar = Snackbar
+                .make(mCoordinatorLayout, getResources().getString(R.string.downloading_photos), Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -81,7 +92,7 @@ public class MainActivity extends AppCompatActivity
                 File file = new File(URI_to_Path.getPath(getApplication(), data.getData()));
                 if (file != null) {
                     //Initialize UploadTask
-                    UploadTask up =  new UploadTask(DropboxClient.getClient(ACCESS_TOKEN), file, getApplicationContext(), coordinatorLayout);
+                    UploadTask up =  new UploadTask(DropboxClient.getClient(ACCESS_TOKEN), file, this, mCoordinatorLayout);
                     up.setDelegate(this);
                     up.execute();
                 }
@@ -89,17 +100,36 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Closing App")
+                .setMessage("Are you sure you want to exit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        System.exit(0);
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
     /*
         Updates UI widgets
      */
     private void updateUI(FullAccount account) {
-        coordinatorLayout = findViewById(R.id.coordinatorLayout);
         ImageView profile = (ImageView) findViewById(R.id.imageView);
-        TextView instructionsTV = (TextView) findViewById(R.id.instructions);
-        /* TextView email = (TextView) findViewById(R.id.email_textView);
+        mInstructionsTV = (TextView) findViewById(R.id.instructions);
+        TextView nameTV = (TextView) findViewById(R.id.profileName);
+        TextView emailTV = (TextView) findViewById(R.id.profileEmail);
 
-        name.setText(account.getName().getDisplayName());
-        email.setText(account.getEmail());*/
+        nameTV.setText(account.getName().getDisplayName());
+        emailTV.setText(account.getEmail());
         Picasso.with(this)
                 .load(account.getProfilePhotoUrl())
                 .resize(200, 200)
@@ -115,9 +145,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onAccountReceived(FullAccount account) {
                 //Print account's info
-                Log.d("User", account.getEmail());
-                Log.d("User", account.getName().getDisplayName());
-                Log.d("User", account.getAccountType().name());
+                Log.d(TAG, account.getEmail());
+                Log.d(TAG, account.getName().getDisplayName());
+                Log.d(TAG, account.getAccountType().name());
                 updateUI(account);
             }
             @Override
@@ -152,7 +182,7 @@ public class MainActivity extends AppCompatActivity
      */
     protected void getFolderContents() {
         mDBxClient = DropboxClient.getClient(ACCESS_TOKEN);
-        DownloadTask downTask = new DownloadTask(mDBxClient, "/", this);
+        DownloadTask downTask = new DownloadTask(mDBxClient, "", this);
         downTask.setDelegate(this);
         downTask.execute();
     }
@@ -185,15 +215,22 @@ public class MainActivity extends AppCompatActivity
     /*
         Sets up photo scrolling list from list of photos received.
      */
-    private void setupPhotoList(List<Photo> list){
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
-        recyclerView.setHasFixedSize(true);
+    private void setupPhotoList(List<Photo> list, boolean scroll){
+        mRecyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         PhotoAdapter adapter = new PhotoAdapter(this,(ArrayList)list);
-        recyclerView.setAdapter(adapter);
-
+        mRecyclerView.setAdapter(adapter);
+        if(scroll) {
+            mRecyclerView.post(new Runnable() {
+                @Override
+                public void run() {
+                    mRecyclerView.smoothScrollToPosition(mRecyclerView.getChildCount());
+                }
+            });
+        }
     }
 
     /*
@@ -204,7 +241,8 @@ public class MainActivity extends AppCompatActivity
         if(mInstructions != null) {
             mInstructions.setVisibility(View.GONE);
         }
-        setupPhotoList(list);
+        setupPhotoList(list, false);
+        mInstructionsTV.setVisibility(View.GONE);
     }
 
     /*
@@ -212,14 +250,17 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onUploadTaskComplete() {
-//        Toast.makeText(this, getResources().getString(R.string.upload_success), Toast.LENGTH_SHORT).show();
+        getFolderContents();
     }
 
-
+    /*
+        Check to see if storage permission has been granted
+     */
     public  boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission. READ_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
+                displayImageChooser();
                 Log.v(TAG,"Permission is granted");
                 return true;
             } else {
@@ -233,8 +274,11 @@ public class MainActivity extends AppCompatActivity
             Log.v(TAG,"Permission is granted");
             return true;
         }
-
     }
+
+    /*
+        Callback of permission request - user's response yes/no
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {

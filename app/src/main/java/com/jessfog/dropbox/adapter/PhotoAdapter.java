@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jessfog.dropbox.DetailActivity;
-import com.jessfog.dropbox.MainActivity;
 import com.jessfog.dropbox.R;
 import com.jessfog.dropbox.model.Photo;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,10 +44,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
-
-        viewHolder.nameTV.setText(mPhotos.get(i).getName());
-//        Picasso.with(context).load(mPhotos.get(i).getUrl()).into(viewHolder.photoIV);
         final String url = mPhotos.get(i).getUrl();
+        final String title = mPhotos.get(i).getName();
+        viewHolder.nameTV.setText(title);
         Glide.with(context)
                 .load(url).thumbnail(0.5f)
                 .crossFade()
@@ -59,11 +57,13 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
             public void onClick(View v) {
                 Bundle b= new Bundle();
                 b.putString("photo_url", url);
+                b.putString("photo_title",title);
                 Intent i = new Intent(context, DetailActivity.class);
                 i.putExtras(b);
-                View sharedView = viewHolder.photoIV;
-                String transitionName = context.getString(R.string.photo_transition);
-                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity)context, sharedView, transitionName);
+                Pair<View, String> p1 = Pair.create((View)viewHolder.photoIV, context.getString(R.string.photo_transition));
+                Pair<View, String> p2 = Pair.create((View)viewHolder.nameTV, context.getString(R.string.photo_title));
+                ActivityOptions transitionActivityOptions =
+                        ActivityOptions.makeSceneTransitionAnimation((Activity)context, p1, p2);
                 context.startActivity(i, transitionActivityOptions.toBundle());
             }
         });

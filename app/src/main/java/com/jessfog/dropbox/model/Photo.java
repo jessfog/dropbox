@@ -34,6 +34,5 @@ public class Photo {
         mUrl = share.getUrl();
         mUrl = mUrl.replace("https://www.dropbox.com", "https://dl.dropboxusercontent.com");
         Log.i("DROPBOX", "Photo url: " + mUrl);
-//        mUrl = "http://www.miniusa.com/content/dam/mini/shopping-tools/learning/build-price-a-mini/build-config-f56-cooper-s.png/jcr:content/renditions/cq5dam.web.500.1000.png";
     }
 }

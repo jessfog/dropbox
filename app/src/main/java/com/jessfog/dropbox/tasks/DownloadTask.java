@@ -2,11 +2,8 @@ package com.jessfog.dropbox.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.dropbox.core.DbxException;
-import com.dropbox.core.DbxRequestUtil;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.Metadata;
 import com.dropbox.core.v2.sharing.CreateSharedLinkWithSettingsErrorException;
@@ -29,10 +26,15 @@ public class DownloadTask extends AsyncTask {
     private List<Photo> mPhotoList = new ArrayList<>();
     private DownloadTaskDelegate mDelegate;
 
-    public DownloadTask(DbxClientV2 mDbxClient, String path, Context context) {
-        this.mDbxClient = mDbxClient;
-        this.mPath = path;
-        this.mContext = context;
+    public DownloadTask(DbxClientV2 dbxClient, String path, Context context) {
+        mDbxClient = dbxClient;
+        mPath = path;
+        mContext = context;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
     }
 
     @Override
@@ -40,20 +42,18 @@ public class DownloadTask extends AsyncTask {
 
         List<Metadata> files;
         try {
-            files = mDbxClient.files().listFolder("").getEntries();
+            files = mDbxClient.files().listFolder(mPath).getEntries();
             if(files != null) {
                 for(Metadata meta : files) {
                     try {
-                        Log.i("DROPBOX1", "Encoded url" + DbxRequestUtil.encodeUrlParam(meta.getPathLower()));
                         SharedLinkMetadata sharedLinkMetadata = mDbxClient.sharing().createSharedLinkWithSettings(meta.getPathDisplay());
                         Photo p = new Photo(meta);
                         p.setUrl(sharedLinkMetadata);
                         mPhotoList.add(p);
-                        Log.i("DROPBOX", "Share url: " + sharedLinkMetadata.getUrl());
                     } catch (CreateSharedLinkWithSettingsErrorException ex) {
-                        System.out.println(ex);
+                        System.out.println(ex.getMessage());
                     } catch (DbxException ex) {
-                        System.out.println(ex);
+                        System.out.println(ex.getMessage());
                     }
                 }
             }
@@ -66,7 +66,6 @@ public class DownloadTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        Toast.makeText(mContext, "Folder contents received", Toast.LENGTH_SHORT).show();
         if(mPhotoList != null && mPhotoList.size() > 0 ) {
             mDelegate.onTaskComplete(mPhotoList);
         }
@@ -76,8 +75,10 @@ public class DownloadTask extends AsyncTask {
         mDelegate = mainActivity;
     }
 
+    /*
+        Interface to notify calling activity that task  has completed
+     */
     public interface DownloadTaskDelegate {
-
         void onTaskComplete(List<Photo> list);
     }
 }

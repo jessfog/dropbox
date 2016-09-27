@@ -7,6 +7,9 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
+/*
+    Interface to be used in layout where FAB is declared to show/hide FAB when list is scrolled.
+ */
 public class ScrollingFAButtonBehavior extends FloatingActionButton.Behavior {
 
     public ScrollingFAButtonBehavior(Context context, AttributeSet attrs) {
@@ -29,7 +32,7 @@ public class ScrollingFAButtonBehavior extends FloatingActionButton.Behavior {
 
         if (dyConsumed > 0 && child.getVisibility() == View.VISIBLE) {
             child.hide();
-        } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
+        } else if (dyConsumed <= 0 && child.getVisibility() != View.VISIBLE) {
             child.show();
         }
     }
