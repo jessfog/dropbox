@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    style="@style/MainScreenCoordinatorLayout">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/accountData"
+        style="@style/MainScreenInnerLayout">
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/ProfileImage" />
+
+        <TextView
+            android:id="@+id/profileName"
+            style="@style/ProfileNameText" />
+
+        <TextView
+            android:id="@+id/profileEmail"
+            style="@style/ProfileEmailText" />
+
+        <TextView
+            android:id="@+id/instructions"
+            android:text="@string/instructions"
+            style="@style/PhotoListInstructionsText" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/card_recycler_view"
+            style="@style/PhotoListRecyclerView" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_behavior="com.jessfog.dropbox.interfaces.ScrollingFAButtonBehavior"
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        style="@style/UploadPhotoButton" />
+
+</android.support.design.widget.CoordinatorLayout>

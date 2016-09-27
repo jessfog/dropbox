@@ -1,0 +1,11 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity"
+    style="@style/LoginScreenLayout">
+    <!-- Update package name -->
+
+    <Button
+        android:id="@+id/sign_in_button"
+        android:text="@string/sign_in"
+        style="@style/LoginScreenButton" />
+</RelativeLayout>

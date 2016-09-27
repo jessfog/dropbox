@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_0cee48836e6a5d1c9cd259fe6695228e354e907b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.5/7a15a7db50f86c4b64aa3367424a60e3a325b8f1/okhttp-2.7.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7a15a7db50f86c4b64aa3367424a60e3a325b8f1">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-2.7.5_c72d64559436a8efe38aa52e45d76ed14e4b8c93/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.7.1/8b93f301823b79033fcbe873779b3d84f9730fc1/jackson-annotations-2.7.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8b93f301823b79033fcbe873779b3d84f9730fc1">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.7.1_14a8eb6700cdf47c4da6a66e7e983b902e91a4e8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_f84ae11c85f217c033a391cd1c449ff2f28e3c8e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_58249f12259c8951eb9c2acaa47aeefa6a366790/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_5a323bb7fd4d6d6e99cc9b3a508649462249f52f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-24.2.1_37ee7dc48aaab8ad1dc313a4f7bba4219927dcbe/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_34e8db17fcaa55f025b6d2a4cb4b417cb6777764/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_54e0c68cf0ed711639c09afb6e61fbc7454b01a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_9500de37c2499eec307b3e0e712a90d84506b5c6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_752569d9664433501d081107a4f86f84fb826f7f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_3fb7695a9d52b10c29e1f59f400402a954ed6571/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.3.1/19047bdb6a4fc00a44124f64ca98e88fc204e7e3/okhttp-3.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="19047bdb6a4fc00a44124f64ca98e88fc204e7e3">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.3.1_82d8f180f5e5252580f31a34ae85478ed22a4529/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_d1e87e2fde2584544190c3f07dc67872a8946218/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_c515a09cd50288e636367185d9b094682a9d5451/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="aa8ca2a825bad507a9906439e935af04aef6bff2">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d1c39bd7b6868e8f8f76d28f863449efab7f75cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_ac2bb69f0e3e5701662836ada1c5cbbb13fc8a8c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_eb364815ed8644fe49fd4122e4e4631d49207fe4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c853ff1a3d2ac993d5585772c3cf769b42d4da5b">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_66e8e5b4e90680d59b8cc2f10151818b90a4c429/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.7.1-1/381bac8a9251eea3b6a1e12c77d54dd946ad449d/jackson-databind-2.7.1-1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="381bac8a9251eea3b6a1e12c77d54dd946ad449d">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.7.1-1_f4dfa1783a04b5e774a17dda9537c650830bc704/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.7.1/4127b62db028f981e81caa248953c0899d720f98/jackson-core-2.7.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="4127b62db028f981e81caa248953c0899d720f98">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.7.1_f79ce7caf14f85dede5539a74b28d618479ff5fd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_2deec98e416a372616133b3d5b426820217b27fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_091f87ec6b7cbc0a6efe684a2b87c9be325ba0f8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.dropbox.core/dropbox-core-sdk/2.0.1/77167a7c620a5c94426c74c13c547cfad310729a/dropbox-core-sdk-2.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="77167a7c620a5c94426c74c13c547cfad310729a">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/dropbox-core-sdk-2.0.1_61fe39cdd3a58ec8fe9a6a1d6ec4be48ba5b2013/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_bbbd90cbaf13df86cbd57d7c06ea3e3484dc8e86/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.8.0/5ea7af56cc7c567ed9856d99efb30740e9b17ff/okio-1.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.8.0_a762a25fc9b0bb161d856ab517f89df6edd12105/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Development/DropBox/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_67ad663ced2d663e31d0000ac19b0733ea4dac08/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.1/86b122e640af09b0723e1fa44083c354ba6d9089/glide-3.6.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="86b122e640af09b0723e1fa44083c354ba6d9089">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.6.1_2aebbced3c54881e0213d83516948bc1e2f23f53/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jessemartinez/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_98bb3214245cd154d78c254e0c5baf0a205764f3/classes.dex" />
+    </item>
+
+</items>

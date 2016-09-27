@@ -1,0 +1,7 @@
+#Tue Sep 27 15:12:08 PDT 2016
+base.0=/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_66e8e5b4e90680d59b8cc2f10151818b90a4c429
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d1c39bd7b6868e8f8f76d28f863449efab7f75cf/classes.dex
+base.1=/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d1c39bd7b6868e8f8f76d28f863449efab7f75cf
+file.0=/Users/jessemartinez/Development/DropBox/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_66e8e5b4e90680d59b8cc2f10151818b90a4c429/classes.dex

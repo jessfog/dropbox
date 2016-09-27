@@ -1,0 +1,23 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DetailScreenScrollLayout">
+
+    <RelativeLayout
+        tools:context="com.jessfog.dropbox.DetailActivity"
+        style="@style/DetailScreenLayout">
+
+        <TextView
+            android:id="@+id/detail_image_title"
+            style="@style/DetailImageTitle" />
+
+        <ImageView
+            android:id="@+id/detail_image"
+            style="@style/DetailImage" />
+
+        <TextView
+            android:id="@+id/detail_description"
+            android:text="@string/dummyContent"
+            style="@style/DetailDescription" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,17 @@
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    card_view:cardCornerRadius="5dp"
+    style="@style/PhotoRowCardViewLayout">
+
+    <FrameLayout style="@style/PhotoRowInnerLayout">
+
+        <ImageView
+            android:id="@+id/photo_iv"
+            style="@style/PhotoRowImage" />
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/PhotoRowTitleText" />
+    </FrameLayout>
+
+</android.support.v7.widget.CardView>
