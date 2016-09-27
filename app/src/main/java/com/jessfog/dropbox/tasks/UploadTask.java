@@ -1,5 +1,6 @@
-package com.jessfog.dropbox;
+package com.jessfog.dropbox.tasks;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,8 @@ import android.view.View;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.WriteMode;
+import com.jessfog.dropbox.MainActivity;
+import com.jessfog.dropbox.R;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,12 +29,19 @@ public class UploadTask extends AsyncTask {
     private Context context;
     private View view;
     private UploadTask.UploadTaskDelegate mDelegate;
+    private ProgressDialog pd;
 
-    UploadTask(DbxClientV2 dbxClient, File file, Context context, View view) {
+    public UploadTask(DbxClientV2 dbxClient, File file, Context context, View view) {
         this.dbxClient = dbxClient;
         this.file = file;
         this.context = context;
         this.view = view;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        pd = ProgressDialog.show(context, "", "Uploading, Please Wait", false);
     }
 
     @Override
@@ -54,6 +64,7 @@ public class UploadTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
+        pd.dismiss();
         Snackbar snackbar = Snackbar
                 .make(view, context.getResources().getString(R.string.upload_success), Snackbar.LENGTH_LONG);
         snackbar.show();
@@ -64,6 +75,9 @@ public class UploadTask extends AsyncTask {
         mDelegate = mainActivity;
     }
 
+    /*
+        Interface to notify calling activity that task  has completed
+     */
     public interface UploadTaskDelegate {
         void onUploadTaskComplete();
     }

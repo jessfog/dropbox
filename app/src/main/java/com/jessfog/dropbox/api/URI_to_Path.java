@@ -1,4 +1,4 @@
-package com.jessfog.dropbox;
+package com.jessfog.dropbox.api;
 
 /**
  * Created by jessemartinez on 9/21/16.
