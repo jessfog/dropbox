@@ -2,15 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/background"
     tools:context="com.jessfog.dropbox.DetailActivity">
 
     <ImageView
         android:id="@+id/detail_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="500dp"
+        android:layout_margin="0dp"
         style="@style/BaseTheme"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:transitionName="@string/photo_transition"/>
 
 </RelativeLayout>

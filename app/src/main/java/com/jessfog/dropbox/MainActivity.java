@@ -1,11 +1,15 @@
 package com.jessfog.dropbox;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     private DbxClientV2 mDBxClient;
     private View coordinatorLayout;
     private TextView mInstructions;
+    private String TAG = "DROPBOX";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,13 +89,26 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    protected void getFolderContents() {
-        mDBxClient = DropboxClient.getClient(ACCESS_TOKEN);
-        DownloadTask downTask = new DownloadTask(mDBxClient, "/", this);
-        downTask.setDelegate(this);
-        downTask.execute();
+    /*
+        Updates UI widgets
+     */
+    private void updateUI(FullAccount account) {
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
+        ImageView profile = (ImageView) findViewById(R.id.imageView);
+        TextView instructionsTV = (TextView) findViewById(R.id.instructions);
+        /* TextView email = (TextView) findViewById(R.id.email_textView);
+
+        name.setText(account.getName().getDisplayName());
+        email.setText(account.getEmail());*/
+        Picasso.with(this)
+                .load(account.getProfilePhotoUrl())
+                .resize(200, 200)
+                .into(profile);
     }
 
+    /*
+        Retrieves Dropbox user from Token
+     */
     protected void getUserAccount() {
         if (ACCESS_TOKEN == null)return;
         new UserAccountTask(DropboxClient.getClient(ACCESS_TOKEN), new UserAccountTask.TaskDelegate() {
@@ -107,31 +125,6 @@ public class MainActivity extends AppCompatActivity
                 Log.d("User", "Error receiving account details.");
             }
         }).execute();
-    }
-
-    private void updateUI(FullAccount account) {
-        coordinatorLayout = findViewById(R.id.coordinatorLayout);
-        ImageView profile = (ImageView) findViewById(R.id.imageView);
-        TextView instructionsTV = (TextView) findViewById(R.id.instructions);
-        /* TextView email = (TextView) findViewById(R.id.email_textView);
-
-        name.setText(account.getName().getDisplayName());
-        email.setText(account.getEmail());*/
-        Picasso.with(this)
-                .load(account.getProfilePhotoUrl())
-                .resize(200, 200)
-                .into(profile);
-    }
-
-    private void upload() {
-        if (ACCESS_TOKEN == null)return;
-        //Select image to upload
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-        startActivityForResult(Intent.createChooser(intent,
-                "Upload to Dropbox"), IMAGE_REQUEST_CODE);
     }
 
     private boolean tokenExists() {
@@ -154,8 +147,45 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /*
+        Makes async task call to retrieve folder contents of this app in Dropbox
+     */
+    protected void getFolderContents() {
+        mDBxClient = DropboxClient.getClient(ACCESS_TOKEN);
+        DownloadTask downTask = new DownloadTask(mDBxClient, "/", this);
+        downTask.setDelegate(this);
+        downTask.execute();
+    }
 
-    private void initViews(List<Photo> list){
+    /*
+        Opens image picker to select a photo to be uploaded
+     */
+    private void upload() {
+        if (ACCESS_TOKEN == null) {
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (isStoragePermissionGranted()) {
+                //listener will handle
+            }
+        } else {
+
+        }
+    }
+
+    private void displayImageChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        startActivityForResult(Intent.createChooser(intent,
+                "Upload to Dropbox"), IMAGE_REQUEST_CODE);
+    }
+
+    /*
+        Sets up photo scrolling list from list of photos received.
+     */
+    private void setupPhotoList(List<Photo> list){
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -166,16 +196,64 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /*
+        Implement interface method to update UI with photos retreived.
+     */
     @Override
     public void onTaskComplete(List<Photo> list) {
-        initViews(list);
-    }
-
-    @Override
-    public void onUploadTaskComplete() {
-        Toast.makeText(this, getResources().getString(R.string.upload_success), Toast.LENGTH_SHORT).show();
         if(mInstructions != null) {
             mInstructions.setVisibility(View.GONE);
+        }
+        setupPhotoList(list);
+    }
+
+    /*
+        Implement interface from Upload Task
+     */
+    @Override
+    public void onUploadTaskComplete() {
+//        Toast.makeText(this, getResources().getString(R.string.upload_success), Toast.LENGTH_SHORT).show();
+    }
+
+
+    public  boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission. READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+
+                Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission. READ_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG,"Permission is granted");
+            return true;
+        }
+
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted
+                    displayImageChooser();
+
+                } else {
+                    // permission denied
+
+                }
+                return;
+            }
+
         }
     }
 }
